@@ -5,62 +5,49 @@ import java.awt.*;
 
 public class DoctorView extends JFrame {
 
-    public DoctorView(String nombre, String especialidad) {
+    private JLabel nameLabel;
+    private JLabel specialtyLabel;
+    private JLabel phoneLabel;
+    private JLabel emailLabel;
+
+    public DoctorView(String name, String specialty, String phone, String email) {
         setTitle("Perfil del Doctor");
-        setSize(600, 400);
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Configuración de los paneles
+        // Panel de encabezado
         JPanel headerPanel = new JPanel();
-        headerPanel.setLayout(new BorderLayout());
-        headerPanel.setBackground(new Color(105, 105, 105));  // Color del encabezado
+        headerPanel.setBackground(new Color(61, 61, 61)); // Color de fondo del encabezado
+        JLabel headerLabel = new JLabel("Hospital");
+        headerLabel.setForeground(Color.WHITE);
+        headerLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        headerPanel.add(headerLabel);
 
-        JLabel hospitalLabel = new JLabel("Hospital", SwingConstants.LEFT);
-        hospitalLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
-        hospitalLabel.setForeground(Color.WHITE);
+        // Panel principal
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(4, 2, 10, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JPanel namePanel = new JPanel();
-        namePanel.setLayout(new BorderLayout());
+        nameLabel = new JLabel("Nombre: " + name);
+        specialtyLabel = new JLabel("Especialidad: " + specialty);
+        phoneLabel = new JLabel("Teléfono: " + phone);
+        emailLabel = new JLabel("Email: " + email);
 
-        JLabel nameLabel = new JLabel(nombre);
-        nameLabel.setFont(new Font("SansSerif", Font.BOLD, 18));
-        nameLabel.setForeground(Color.BLACK);
+        // Añadir etiquetas al panel principal
+        mainPanel.add(nameLabel);
+        mainPanel.add(new JLabel()); // Espacio vacío
+        mainPanel.add(specialtyLabel);
+        mainPanel.add(new JLabel()); // Espacio vacío
+        mainPanel.add(phoneLabel);
+        mainPanel.add(new JLabel()); // Espacio vacío
+        mainPanel.add(emailLabel);
+        mainPanel.add(new JLabel()); // Espacio vacío
 
-        JLabel specialtyLabel = new JLabel(especialidad);
-        specialtyLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        specialtyLabel.setForeground(Color.GRAY);
-
-        // Añadir etiquetas al panel de nombre
-        namePanel.add(nameLabel, BorderLayout.NORTH);
-        namePanel.add(specialtyLabel, BorderLayout.SOUTH);
-
-        // Panel derecho (puedes añadir más detalles si es necesario)
-        JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new BorderLayout());
-        rightPanel.setBackground(Color.YELLOW);  // Color de fondo (ajústalo según lo necesites)
-
-        // Añadir los elementos al panel derecho
-        rightPanel.add(namePanel, BorderLayout.CENTER);
-
-        // Añadir el encabezado al panel principal
-        headerPanel.add(hospitalLabel, BorderLayout.WEST);
-        headerPanel.add(rightPanel, BorderLayout.EAST);
-
-        // Añadir headerPanel al marco
+        // Añadir paneles a la ventana
         add(headerPanel, BorderLayout.NORTH);
+        add(mainPanel, BorderLayout.CENTER);
 
-        // Panel vacío en el centro (espacio en blanco)
-        JPanel emptyPanel = new JPanel();
-        emptyPanel.setBackground(Color.WHITE);
-        add(emptyPanel, BorderLayout.CENTER);
-
-        // Mostrar la ventana
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        // Crear una instancia de DoctorView con un ejemplo de nombre y especialidad
-        new DoctorView("Fernanda Paz", "Doctora General");
     }
 }

@@ -1,17 +1,19 @@
 package src;
 
-import javax.swing.*;
-
 import src.controller.LoginController;
+import src.services.DataDoctor;
 import src.view.LoginView;
-import src.view.DoctorView;
 
-public class Main extends JFrame {
+public class Main {
     public static void main(String[] args) {
+        // Crea la vista y el servicio de datos
+         LoginView loginView = new LoginView();
+        DataDoctor dataDoctor = new DataDoctor();
 
-        LoginView view = new LoginView();
+        // Crea el controlador
+        LoginController loginController = new LoginController(loginView, dataDoctor);
 
-        LoginController loginController = new LoginController();
-
+        // Muestra la ventana de login
+        loginView.setVisible(true);
     }
 }
