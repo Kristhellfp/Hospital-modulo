@@ -2,18 +2,16 @@ package src;
 
 import src.controller.LoginController;
 import src.services.DataDoctor;
+import src.view.DoctorLayout; // Asegúrate de que DoctorLayout sea la clase que quieres usar
 import src.view.LoginView;
 
 public class Main {
     public static void main(String[] args) {
-        // Crea la vista y el servicio de datos
-         LoginView loginView = new LoginView();
+        // Crear instancias de la vista y los servicios
+        LoginView loginView = new LoginView();
         DataDoctor dataDoctor = new DataDoctor();
 
-        // Crea el controlador
-        LoginController loginController = new LoginController(loginView, dataDoctor);
-
-        // Muestra la ventana de login
-        loginView.setVisible(true);
+        // Crear el controlador y pasarle la vista y el servicio de datos
+        LoginController loginController = new LoginController(loginView);
     }
 }

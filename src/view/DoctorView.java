@@ -3,51 +3,60 @@ package src.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class DoctorView extends JFrame {
+public class DoctorView {
+    private JFrame frame; // Ventana principal
+    private JLabel nameLabel; // Etiqueta para el nombre
+    private JLabel emailLabel; // Etiqueta para el email
+    private JLabel phoneLabel; // Etiqueta para el teléfono
+    private JLabel specialtyLabel; // Etiqueta para la especialidad
 
-    private JLabel nameLabel;
-    private JLabel specialtyLabel;
-    private JLabel phoneLabel;
-    private JLabel emailLabel;
+    public DoctorView() {
+        // Configuración de la ventana
+        frame = new JFrame("Perfil del Doctor");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
-    public DoctorView(String name, String specialty, String phone, String email) {
-        setTitle("Perfil del Doctor");
-        setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        // Panel para el diseño
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4, 2)); // Diseño en cuadrícula
 
-        // Panel de encabezado
-        JPanel headerPanel = new JPanel();
-        headerPanel.setBackground(new Color(61, 61, 61)); // Color de fondo del encabezado
-        JLabel headerLabel = new JLabel("Hospital");
-        headerLabel.setForeground(Color.WHITE);
-        headerLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        headerPanel.add(headerLabel);
+        // Inicializar etiquetas
+        nameLabel = new JLabel();
+        emailLabel = new JLabel();
+        phoneLabel = new JLabel();
+        specialtyLabel = new JLabel();
 
-        // Panel principal
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(4, 2, 10, 10));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        // Agregar etiquetas de texto al panel
+        panel.add(new JLabel("Nombre:")); // Etiqueta estática
+        panel.add(nameLabel); // Etiqueta dinámica
+        panel.add(new JLabel("Email:"));
+        panel.add(emailLabel);
+        panel.add(new JLabel("Teléfono:"));
+        panel.add(phoneLabel);
+        panel.add(new JLabel("Especialidad:"));
+        panel.add(specialtyLabel);
 
-        nameLabel = new JLabel("Nombre: " + name);
-        specialtyLabel = new JLabel("Especialidad: " + specialty);
-        phoneLabel = new JLabel("Teléfono: " + phone);
-        emailLabel = new JLabel("Email: " + email);
+        // Agregar el panel a la ventana
+        frame.add(panel);
+    }
 
-        // Añadir etiquetas al panel principal
-        mainPanel.add(nameLabel);
-        mainPanel.add(new JLabel()); // Espacio vacío
-        mainPanel.add(specialtyLabel);
-        mainPanel.add(new JLabel()); // Espacio vacío
-        mainPanel.add(phoneLabel);
-        mainPanel.add(new JLabel()); // Espacio vacío
-        mainPanel.add(emailLabel);
-        mainPanel.add(new JLabel()); // Espacio vacío
+    // Método para actualizar la información del doctor
+    public void setDoctorInfo(String nombre, String email, String telefono, String especialidad) {
+        nameLabel.setText(nombre);
+        emailLabel.setText(email);
+        phoneLabel.setText(telefono);
+        specialtyLabel.setText(especialidad);
+    }
 
-        // Añadir paneles a la ventana
-        add(headerPanel, BorderLayout.NORTH);
-        add(mainPanel, BorderLayout.CENTER);
+    // Método para mostrar la ventana
+    public void show() {
+        frame.setVisible(true);
+    }
 
-        setVisible(true);
+    // Método para cerrar la ventana
+    public void dispose() {
+        frame.dispose();
     }
 }
+
