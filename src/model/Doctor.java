@@ -1,71 +1,45 @@
 package src.model;
 
 public class Doctor {
-
     private String nombre;
+    private String email;
+    private String telefono;
     private String usuario;
-    private String correo;
     private String contraseña;
     private String especialidad;
 
     // Constructor
-    public Doctor(String nombre, String correo, String especialidad, String telefono, String usuario, String contraseña) {
+    public Doctor(String nombre, String email, String telefono, String usuario, String contraseña, String especialidad) {
         this.nombre = nombre;
-        this.correo = correo;
-        this.especialidad = especialidad;
+        this.email = email;
+        this.telefono = telefono;
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.especialidad = especialidad;
     }
 
-    // --- [ Métodos Getter y Setter ]
+    // Métodos getters
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getEmail() {
+        return email;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
+    public String getTelefono() {
+        return telefono;
     }
 
     public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
     public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "nombre='" + nombre + '\'' +
-                ", correo='" + correo + '\'' +
-                ", especialidad='" + especialidad + '\'' +
-                ", usuario='" + usuario + '\'' +
-                ", contraseña='" + contraseña + '\'' +
-                '}';
+    public String getEspecialidad() {
+        return especialidad;
     }
 }

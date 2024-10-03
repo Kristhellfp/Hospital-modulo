@@ -1,65 +1,53 @@
 package src.view;
 
-import src.model.Doctor;
-import src.services.DataDoctor;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class LoginView extends JFrame {
-
-    private DataDoctor dataDoctor;
+    private JTextField campoUsuario;
+    private JPasswordField campoContraseña;
+    private JButton botonLogin;
 
     public LoginView() {
-        dataDoctor = new DataDoctor();  // Crear instancia de DataDoctor
-
-        setTitle("Login");
+        // Configura la ventana
+        setTitle("Login Doctor");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Panel para el login
-        JPanel panel = new JPanel();
-        JLabel lblUsuario = new JLabel("Usuario:");
-        JTextField txtUsuario = new JTextField(10);
-        JLabel lblPassword = new JLabel("Contraseña:");
-        JPasswordField txtPassword = new JPasswordField(10);
+        // Crea los componentes
+        campoUsuario = new JTextField(15);
+        campoContraseña = new JPasswordField(15);
+        botonLogin = new JButton("Iniciar sesión");
 
-        JButton btnLogin = new JButton("Iniciar Sesión");
-
-        // Acción al presionar el botón de iniciar sesión
-        btnLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String usuario = txtUsuario.getText();
-                String password = new String(txtPassword.getPassword());
-
-                // Validar el login usando DataDoctor
-                Doctor doctor = dataDoctor.login(usuario, password);
-
-                if (doctor != null) {
-                    // Si el login es exitoso, abrir DoctorView con la información del doctor
-                    new DoctorView(doctor.getNombre(), doctor.getEspecialidad());
-                    dispose();  // Cerrar la ventana de login
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-                }
-            }
-        });
-
-        // Añadir los componentes al panel
-        panel.add(lblUsuario);
-        panel.add(txtUsuario);
-        panel.add(lblPassword);
-        panel.add(txtPassword);
-        panel.add(btnLogin);
-
-        add(panel);
-        setVisible(true);
+        // Layout
+        setLayout(new GridLayout(3, 2));
+        add(new JLabel("Usuario:"));
+        add(campoUsuario);
+        add(new JLabel("Contraseña:"));
+        add(campoContraseña);
+        add(new JLabel()); // Espacio vacío
+        add(botonLogin);
     }
 
-    public static void main(String[] args) {
-        new LoginView();
+    // Métodos para obtener los datos ingresados
+    public String getUsuario() {
+        return campoUsuario.getText();
+    }
+
+    public String getContraseña() {
+        return new String(campoContraseña.getPassword());
+    }
+
+    // Método para agregar un listener al botón de login
+    public void addLoginListener(ActionListener listener) {
+        botonLogin.addActionListener(listener);
+    }
+
+    // Método para mostrar un error
+    public void showError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+
