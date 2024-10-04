@@ -19,11 +19,11 @@ public class LoginView extends JFrame {
         setSize(400, 500);
         setLocationRelativeTo(null);
 
-
+        // Crear un contenedor principal con BorderLayout
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(240, 248, 255));  // Color azul claro
 
-
+        // Panel de cabecera con título
         JPanel headerPanel = new JPanel();
         headerPanel.setBackground(new Color(70, 130, 180));  // Azul acero
         JLabel headerLabel = new JLabel("Iniciar Sesión", JLabel.CENTER);
@@ -53,7 +53,7 @@ public class LoginView extends JFrame {
         gbc.gridy = 0;
         formPanel.add(userField, gbc);
 
-
+        // Etiqueta y campo de texto para "Contraseña"
         JLabel passwordLabel = new JLabel("Contraseña:");
         passwordLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
         passwordLabel.setForeground(new Color(70, 130, 180));
@@ -78,16 +78,17 @@ public class LoginView extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         formPanel.add(loginButton, gbc);
 
-
+        // Agregar los paneles al contenedor principal
         mainPanel.add(headerPanel, BorderLayout.NORTH);
         mainPanel.add(formPanel, BorderLayout.CENTER);
 
-
+        // Agregar el panel principal a la ventana
         add(mainPanel);
         setVisible(true);
     }
 
-    public String getUsername() {
+    // Métodos para obtener los datos del usuario y la contraseña
+    public String getUsuario() {
         return userField.getText();
     }
 
@@ -95,6 +96,7 @@ public class LoginView extends JFrame {
         return new String(passwordField.getPassword());
     }
 
+    // Método para agregar un ActionListener al botón de login
     public void addLoginListener(ActionListener listener) {
         loginButton.addActionListener(listener);
     }

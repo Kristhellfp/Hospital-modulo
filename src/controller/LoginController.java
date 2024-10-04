@@ -1,49 +1,35 @@
 package src.controller;
 
+import backEnd.BackEnd;
 import src.view.LoginView;
-import src.view.DoctorLayout;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class LoginController {
+
     private LoginView loginView;
+    private BackEnd backEnd;
 
-    public LoginController(LoginView view) {
-        this.loginView = view;
+    public LoginController(LoginView loginView, BackEnd backEnd) {
+        this.loginView = loginView;
+        this.backEnd = backEnd;
 
-        // Añadir el listener para el botón de inicio de sesión
-        loginView.addLoginListener(new LoginListener());
+        // Aquí se agrega el ActionListener al botón de login
+        this.loginView.addLoginListener(e -> handleLogin());
     }
 
-    private class LoginListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String username = loginView.getUsername();
-            String password = loginView.getPassword();
+    private void handleLogin() {
+        String usuario = loginView.getUsuario();
+        String contraseña = loginView.getPassword();
 
-            // Aquí puedes agregar la lógica para verificar el usuario y la contraseña
-            if (isValidUser(username, password)) {
-                // Datos del doctor simulados
-                HashMap<String, String> dataDoctor = new HashMap<>();
-                dataDoctor.put("Nombre", "Fernanda Paz");
-                dataDoctor.put("Especialidad", "Doctora General");
-                dataDoctor.put("Email", "fernanda.paz@hospital.com");
-                dataDoctor.put("Telefono", "1234-5678");
+        HashMap<String, String> result = backEnd.validarDatos(usuario, contraseña);
 
-                // Si la autenticación es exitosa, abrir la vista del doctor
-                new DoctorLayout(dataDoctor);
-                loginView.dispose(); // Cerrar la ventana de inicio de sesión
-            } else {
-                JOptionPane.showMessageDialog(loginView, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        private boolean isValidUser(String username, String password) {
-            // Aquí puedes agregar la lógica para validar el usuario
-            return "admin".equals(username) && "password".equals(password); // Ejemplo simple
+        if (result.containsKey("Error")) {
+            System.out.println("Error: " + result.get("Error"));
+        } else {
+            System.out.println("Login exitoso:");
+            System.out.println("Nombre: " + result.get("Nombre"));
+            System.out.println("Correo: " + result.get("Correo"));
+            System.out.println("Especialidad: " + result.get("Especialidad"));
         }
     }
 }
