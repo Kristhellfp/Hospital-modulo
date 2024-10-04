@@ -10,7 +10,7 @@ public class DoctorView extends JFrame {
     public DoctorView(HashMap<String, String> doctorData) {
         setSize(pantalla[0], pantalla[1]);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Perfil del Doctor");
+        setTitle("Perfil del Doctor Asignado");
         setLayout(new BorderLayout());
 
         // Panel de cabecera
@@ -75,7 +75,7 @@ public class DoctorView extends JFrame {
                 {"Andrea Lucas", "1984-12-02", "09:00", "Chequeo"},
                 {"Alejandra Vargas", "1991-11-15", "09:30", "Consulta de alergias"},
                 {"Diego Gutiérrez", "1988-07-20", "10:00", "Control de colesterol"},
-                {"Sara Jiménez", "1992-09-09", "10:30", "Chequeo"},
+                {"Sara Jiménez", "1992-09-09", "10:30", "Chequeo de rutina"},
                 {"Manuel Santos", "1994-10-22", "11:00", "Cita de seguimiento"},
                 {"Elena Castro", "1986-03-11", "11:30", "Cita de seguimiento"},
                 {"Rafael Díaz", "1995-01-29", "12:00", "Control de azúcar en sangre"},
@@ -123,7 +123,7 @@ public class DoctorView extends JFrame {
         restricciones.fill = GridBagConstraints.HORIZONTAL;
         restricciones.gridx = 0;
 
-        menu.add(crearUnBoton("Consultas del día"), restricciones);
+        menu.add(crearUnBoton("Consultas diarias"), restricciones);
         menu.add(crearUnBoton("Salas"), restricciones);
         menu.add(crearUnBoton("Farmacia"), restricciones);
         menu.add(crearUnBoton("Pacientes registrados"), restricciones);

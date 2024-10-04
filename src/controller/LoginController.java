@@ -26,7 +26,7 @@ public class LoginController {
         if (result.containsKey("Error")) {
             System.out.println("Error: " + result.get("Error"));
         } else {
-            System.out.println("Login exitoso:");
+            System.out.println("Login con éxito:");
             System.out.println("Nombre: " + result.get("Nombre"));
             System.out.println("Correo: " + result.get("Correo"));
             System.out.println("Especialidad: " + result.get("Especialidad"));
