@@ -115,32 +115,47 @@ public class DoctorView extends JFrame {
         JPanel panelMenu = new JPanel();
         panelMenu.setPreferredSize(new Dimension(250, pantalla[1]));
         panelMenu.setBackground(new Color(35, 38, 40));
-        panelMenu.setLayout(new BorderLayout());
 
-        JPanel menu = new JPanel(new GridBagLayout());
-        menu.setBackground(new Color(200, 200, 200));
-        GridBagConstraints restricciones = new GridBagConstraints();
-        restricciones.fill = GridBagConstraints.HORIZONTAL;
-        restricciones.gridx = 0;
+        // Cambiar a GridBagLayout para mejor control de espaciado y centrado
+        panelMenu.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaciado uniforme entre los botones
+        gbc.anchor = GridBagConstraints.CENTER; // Alinea los botones en el centro
 
-        menu.add(crearUnBoton("Consultas diarias"), restricciones);
-        menu.add(crearUnBoton("Salas"), restricciones);
-        menu.add(crearUnBoton("Farmacia"), restricciones);
-        menu.add(crearUnBoton("Pacientes registrados"), restricciones);
-        menu.add(crearUnBoton("Citar en otra área"), restricciones);
+        // Crear botones y añadir espacio entre ellos
+        String[] buttonLabels = {"Consultas diarias", "Salas", "Farmacia", "Pacientes registrados", "Citar en otra área"};
+        for (String label : buttonLabels) {
+            JButton button = crearUnBoton(label);
+            panelMenu.add(button, gbc); // Añadir botón con constraints para centrado y espaciado
+        }
 
-        panelMenu.add(menu, BorderLayout.CENTER);
         return panelMenu;
     }
 
     private JButton crearUnBoton(String texto) {
         JButton boton = new JButton(texto);
-        boton.setPreferredSize(new Dimension(200, 40));
-        boton.setBackground(new Color(50, 70, 90));
+        boton.setPreferredSize(new Dimension(200, 50)); // Hacer botones más grandes
+        boton.setBackground(new Color(70, 130, 180)); // Color base
         boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial", Font.BOLD, 14));
+        boton.setFont(new Font("Arial", Font.BOLD, 16)); // Texto más grande
         boton.setFocusPainted(false);
-        boton.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80), 1));
+        boton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.WHITE, 2),
+                BorderFactory.createEmptyBorder(5, 15, 5, 15) // Aumentar padding interno
+        ));
+
+        // Añadir efecto de hover
+        boton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton.setBackground(new Color(100, 150, 220)); // Color más claro al pasar el mouse
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton.setBackground(new Color(70, 130, 180)); // Regresa al color original
+            }
+        });
 
         boton.addActionListener(e -> {
             System.out.println(texto);
