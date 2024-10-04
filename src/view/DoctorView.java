@@ -71,23 +71,23 @@ public class DoctorView extends JFrame {
                 {"Mateo Ramírez", "1990-03-21", "07:00", "Consulta general"},
                 {"Lucía Fernández", "1987-05-17", "07:30", "Chequeo de rutina"},
                 {"David Ortega", "1996-06-12", "08:00", "Control de presión arterial"},
-                {"Claudia Morales", "1993-08-07", "08:30", "Cita de seguimiento"},
-                {"Javier Pérez", "1984-12-02", "09:00", "Chequeo"},
+                {"Claudia Morales", "1993-08-07", "08:30", "Control de alergias"},
+                {"Andrea Lucas", "1984-12-02", "09:00", "Chequeo"},
                 {"Alejandra Vargas", "1991-11-15", "09:30", "Consulta de alergias"},
                 {"Diego Gutiérrez", "1988-07-20", "10:00", "Control de colesterol"},
                 {"Sara Jiménez", "1992-09-09", "10:30", "Chequeo"},
                 {"Manuel Santos", "1994-10-22", "11:00", "Cita de seguimiento"},
-                {"Elena Castro", "1986-03-11", "11:30", "Consulta general"},
+                {"Elena Castro", "1986-03-11", "11:30", "Cita de seguimiento"},
                 {"Rafael Díaz", "1995-01-29", "12:00", "Control de azúcar en sangre"},
                 {"Isabel Navarro", "1990-12-05", "12:30", "Chequeo de rutina"},
-                {"Gabriel Soto", "1989-06-23", "13:00", "Consulta de alergias"},
+                {"Pablo Andrade", "1989-06-23", "13:00", "Consulta de alergias"},
                 {"Patricia Suárez", "1991-04-17", "13:30", "Control de hipertensión"},
                 {"Esteban Ruiz", "1996-02-08", "14:00", "Cita de seguimiento"},
                 {"Ana Gómez", "1987-10-18", "14:30", "Consulta general"},
                 {"Oscar Martínez", "1993-03-19", "15:00", "Chequeo"},
-                {"Verónica León", "1992-11-30", "15:30", "Consulta de alergias"},
+                {"Jessica Molina", "1992-11-30", "15:30", "Consulta de alergias"},
                 {"Roberto Vega", "1994-09-07", "16:00", "Control de diabetes"},
-                {"Andrea Torres", "1988-02-14", "16:30", "Chequeo"}
+                {"Andrea Torres", "1988-02-14", "16:30", "Chequeo de rutina"}
         };
 
         // Agregar paneles para cada paciente
