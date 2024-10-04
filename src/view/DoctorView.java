@@ -87,7 +87,7 @@ public class DoctorView extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER; // Alinea los botones en el centro
 
         // Crear botones y añadir espacio entre ellos
-        String[] buttonLabels = {"Consultas diarias", "Salas", "Farmacia", "Pacientes registrados", "Citar en otra área"};
+        String[] buttonLabels = {"Consultas diarias", "Salas", "Farmacia", "Pacientes", "Citar en otra área"};
         for (String label : buttonLabels) {
             JButton button = crearUnBoton(label);
             panelMenu.add(button, gbc); // Añadir botón con constraints para centrado y espaciado
@@ -133,4 +133,3 @@ public class DoctorView extends JFrame {
         new DoctorView(dummyData);
     }
 }
-
